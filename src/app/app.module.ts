@@ -12,6 +12,7 @@ import {DiscoveryPage} from "../pages/discovery/discovery";
 import {ChatPage} from "../pages/chat/chat";
 import {NotificationPage} from "../pages/notification/notification";
 import {MorePage} from "../pages/more/more";
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MorePage} from "../pages/more/more";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {
