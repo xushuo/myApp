@@ -14,6 +14,7 @@ import {NotificationPage} from "../pages/notification/notification";
 import {MorePage} from "../pages/more/more";
 import {RestProvider} from '../providers/rest/rest';
 import {LoginPage} from "../pages/login/login";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {LoginPage} from "../pages/login/login";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
