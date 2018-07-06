@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 
 /**
@@ -9,7 +9,6 @@ import {LoginPage} from "../login/login";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-more',
   templateUrl: 'more.html',
