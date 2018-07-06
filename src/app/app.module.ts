@@ -15,6 +15,7 @@ import {MorePage} from "../pages/more/more";
 import {RestProvider} from '../providers/rest/rest';
 import {LoginPage} from "../pages/login/login";
 import {HttpModule} from "@angular/http";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {HttpModule} from "@angular/http";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
