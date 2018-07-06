@@ -1,9 +1,8 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {ErrorObservable} from "rxjs/Observable";
-import {catchError} from "rxjs/operators";
-import {retry} from "rxjs/operator/retry";
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 /*
  Generated class for the RestProvider provider.
@@ -14,29 +13,30 @@ import {Observable} from "rxjs";
 @Injectable()
 export class RestProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
   }
 
   private getUrlReturn(url: string): Observable<string[]> {
-    return this.http.get(url).pipe(
-      retry(3),
-      catchError(this.handleError)
-    );
+    return this.http.get(url)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+  private extractData(res: Response) {
+    let body = res.json();
+    return JSON.parse(body) || {};
+  }
+
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+      errMsg = error.message ? error.message : error.toString();
     }
-    // return an ErrorObservable with a user-facing error message
-    return new ErrorObservable(
-      'Something bad happened; please try again later.');
-  };
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
 }

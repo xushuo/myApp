@@ -12,7 +12,8 @@ import {DiscoveryPage} from "../pages/discovery/discovery";
 import {ChatPage} from "../pages/chat/chat";
 import {NotificationPage} from "../pages/notification/notification";
 import {MorePage} from "../pages/more/more";
-import { RestProvider } from '../providers/rest/rest';
+import {RestProvider} from '../providers/rest/rest';
+import {LoginPage} from "../pages/login/login";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RestProvider } from '../providers/rest/rest';
     ChatPage,
     NotificationPage,
     MorePage,
+    LoginPage,
     TabsPage
   ],
   imports: [
@@ -34,6 +36,7 @@ import { RestProvider } from '../providers/rest/rest';
     HomePage,
     DiscoveryPage,
     ChatPage,
+    LoginPage,
     NotificationPage,
     MorePage,
     TabsPage
@@ -42,6 +45,7 @@ import { RestProvider } from '../providers/rest/rest';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider,
     RestProvider
   ]
 })
