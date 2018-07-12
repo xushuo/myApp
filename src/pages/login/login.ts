@@ -3,6 +3,7 @@ import {LoadingController, NavController, NavParams, ToastController, ViewContro
 import {BaseUI} from "../../common/baseui";
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
+import {RegisterPage} from "../register/register";
 
 /**
  * Generated class for the LoginPage page.
@@ -12,47 +13,51 @@ import {Storage} from "@ionic/storage";
  */
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+    selector: 'page-login',
+    templateUrl: 'login.html',
 })
 export class LoginPage extends BaseUI {
 
-  public mobile: string;
-  public password: string;
-  public errorMessage: any;
+    public mobile: string;
+    public password: string;
+    public errorMessage: any;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public viewController: ViewController,
-              public loadingCtrl: LoadingController,
-              public rest: RestProvider,
-              public toastCtrl: ToastController,
-              public storage: Storage) {
-    super()
-  }
+    constructor(public navCtrl: NavController,
+                public navParams: NavParams,
+                public viewController: ViewController,
+                public loadingCtrl: LoadingController,
+                public rest: RestProvider,
+                public toastCtrl: ToastController,
+                public storage: Storage) {
+        super()
+    }
 
-  ionViewDidLoad() {
-  }
+    ionViewDidLoad() {
+    }
 
-  login() {
-    var loading = super.showLoading(this.loadingCtrl, "登录中...");
-    this.rest.login(this.mobile, this.password)
-      .subscribe(
-        e => {
-          if (e['Status'] == 'OK') {
-            this.storage.set('UserId', e['UserId']);
-            loading.dismiss();
-            this.dismiss();
-          } else {
-            loading.dismiss()
-            super.showToast(this.toastCtrl, e['StatusContent'])
-          }
-        },
-        error => this.errorMessage = <any>error)
-  }
+    login() {
+        var loading = super.showLoading(this.loadingCtrl, "登录中...");
+        this.rest.login(this.mobile, this.password)
+            .subscribe(
+                e => {
+                    if (e['Status'] == 'OK') {
+                        this.storage.set('UserId', e['UserId']);
+                        loading.dismiss();
+                        this.dismiss();
+                    } else {
+                        loading.dismiss()
+                        super.showToast(this.toastCtrl, e['StatusContent'])
+                    }
+                },
+                error => this.errorMessage = <any>error)
+    }
 
-  dismiss() {
-    this.viewController.dismiss()
-  }
+    pushRegister() {
+        this.navCtrl.push(RegisterPage);
+    }
+
+    dismiss() {
+        this.viewController.dismiss()
+    }
 
 }

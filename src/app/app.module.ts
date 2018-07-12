@@ -16,42 +16,45 @@ import {RestProvider} from '../providers/rest/rest';
 import {LoginPage} from "../pages/login/login";
 import {HttpModule} from "@angular/http";
 import {IonicStorageModule} from "@ionic/storage";
+import {RegisterPage} from "../pages/register/register";
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage,
-    DiscoveryPage,
-    ChatPage,
-    NotificationPage,
-    MorePage,
-    LoginPage,
-    TabsPage
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    DiscoveryPage,
-    ChatPage,
-    LoginPage,
-    NotificationPage,
-    MorePage,
-    TabsPage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider,
-    RestProvider
-  ]
+    declarations: [
+        MyApp,
+        HomePage,
+        DiscoveryPage,
+        ChatPage,
+        NotificationPage,
+        MorePage,
+        RegisterPage,
+        LoginPage,
+        TabsPage
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        IonicModule.forRoot(MyApp, {backButtonText: '返回'}),
+        IonicStorageModule.forRoot()
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        HomePage,
+        DiscoveryPage,
+        RegisterPage,
+        ChatPage,
+        LoginPage,
+        NotificationPage,
+        MorePage,
+        TabsPage
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        RestProvider,
+        RestProvider
+    ]
 })
 export class AppModule {
 }
