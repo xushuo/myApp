@@ -19,14 +19,14 @@ export class RestProvider {
     //account
     private apiUrlLogin = 'https://imoocqa.gugujiankong.com/api/account/login';
     private apiUrlRegister = 'https://imoocqa.gugujiankong.com/api/account/register';
-    /*  private apiUrlLoginWithMd5 = 'https://imoocqa.gugujiankong.com/api/account/loginwithmd5';
-     private apiUrlUserInfo = 'https://imoocqa.gugujiankong.com/api/account/userinfo';
-     private apiUrlUpdateNickName = 'https://imoocqa.gugujiankong.com/api/account/updatenickname';*/
+    private apiUrlLoginWithMd5 = 'https://imoocqa.gugujiankong.com/api/account/loginwithmd5';
+    private apiUrlUserInfo = 'https://imoocqa.gugujiankong.com/api/account/userinfo';
+    private apiUrlUpdateNickName = 'https://imoocqa.gugujiankong.com/api/account/updatenickname';
     //question
-    /*  private apiUrlQuestionSave = 'https://imoocqa.gugujiankong.com/api/question/save';
-     private apiUrlQuestionList = 'https://imoocqa.gugujiankong.com/api/question/list?index=1&number=10';
-     private apiUrlGetQuestion = "https://imoocqa.gugujiankong.com/api/question/get";
-     private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";*/
+    private apiUrlQuestionSave = 'https://imoocqa.gugujiankong.com/api/question/save';
+    private apiUrlQuestionList = 'https://imoocqa.gugujiankong.com/api/question/list?index=1&number=10';
+    private apiUrlGetQuestion = "https://imoocqa.gugujiankong.com/api/question/get";
+    private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";
 
     constructor(public http: Http) {
     }
@@ -37,6 +37,10 @@ export class RestProvider {
 
     public register(mobile, password, nickname): Observable<string[]> {
         return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&password=" + password + "&nickname=" + nickname);
+    }
+
+    public getUserInfo(userId): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId);
     }
 
     private getUrlReturn(url: string): Observable<string[]> {

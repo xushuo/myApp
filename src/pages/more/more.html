@@ -6,35 +6,39 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>更多</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>更多</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <div *ngIf="notLogin">
-    <ion-card>
-      <ion-card-header text-center>
-        登录JustRun,体验更多功能
-      </ion-card-header>
+    <div *ngIf="notLogin">
+        <ion-card>
+            <ion-card-header text-center>
+                登录JustRun,体验更多功能
+            </ion-card-header>
 
-      <ion-card-content text-center>
+            <ion-card-content text-center>
 
-        <button ion-button outline small (click)="showModal()">登录/注册</button>
+                <button ion-button outline small (click)="showModal()">登录/注册</button>
 
-      </ion-card-content>
+            </ion-card-content>
 
-    </ion-card>
-  </div>
-  <div *ngIf="logined">
-    <ion-card>
-      <ion-card-header text-center>
-          登录成功
-      </ion-card-header>
-    </ion-card>
-  </div>
+        </ion-card>
+    </div>
+    <div *ngIf="logined">
+        <ion-list class="marginTop">
+            <button ion-item>
+                <ion-avatar item-start>
+                    <img src="{{headface}}">
+                </ion-avatar>
+                <h2>{{userinfo.UserNickName}}</h2>
+                <p>查看个人主页或编辑简介</p>
+            </button>
+        </ion-list>
+    </div>
 
 
 </ion-content>
