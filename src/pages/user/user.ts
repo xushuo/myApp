@@ -6,7 +6,6 @@ import {
 import {RestProvider} from "../../providers/rest/rest";
 import {BaseUI} from "../../common/baseui";
 import {Storage} from "@ionic/storage";
-import {RestProvider} from "../../providers/rest/rest";
 import {HeadfacePage} from "../headface/headface";
 
 /**
