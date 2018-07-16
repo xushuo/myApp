@@ -18,6 +18,7 @@ import {HttpModule} from "@angular/http";
 import {IonicStorageModule} from "@ionic/storage";
 import {RegisterPage} from "../pages/register/register";
 import {UserPage} from "../pages/user/user";
+import {HeadfacePage} from "../pages/headface/headface";
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import {UserPage} from "../pages/user/user";
         NotificationPage,
         MorePage,
         RegisterPage,
+        HeadfacePage,
         LoginPage,
         TabsPage
     ],
@@ -43,6 +45,7 @@ import {UserPage} from "../pages/user/user";
         MyApp,
         HomePage,
         UserPage,
+        HeadfacePage,
         DiscoveryPage,
         RegisterPage,
         ChatPage,

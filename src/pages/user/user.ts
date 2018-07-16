@@ -7,6 +7,7 @@ import {RestProvider} from "../../providers/rest/rest";
 import {BaseUI} from "../../common/baseui";
 import {Storage} from "@ionic/storage";
 import {RestProvider} from "../../providers/rest/rest";
+import {HeadfacePage} from "../headface/headface";
 
 /**
  * Generated class for the UserPage page.
@@ -38,6 +39,10 @@ export class UserPage extends BaseUI {
 
     ionViewDidEnter() {
         this.loadUserPage();
+    }
+
+    jumpToHeadface() {
+        this.navCtrl.push(HeadfacePage)
     }
 
     loadUserPage() {
