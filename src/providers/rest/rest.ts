@@ -43,6 +43,11 @@ export class RestProvider {
         return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId);
     }
 
+    public updateInfo(userId, nickname): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId=" + userId + "&nickname=" + nickname);
+    }
+
+
     private getUrlReturn(url: string): Observable<string[]> {
         return this.http.get(url)
             .map(this.extractData)

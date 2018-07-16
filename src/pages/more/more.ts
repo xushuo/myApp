@@ -4,6 +4,7 @@ import {LoginPage} from "../login/login";
 import {Storage} from "@ionic/storage";
 import {BaseUI} from "../../common/baseui";
 import {RestProvider} from "../../providers/rest/rest";
+import {UserPage} from "../user/user";
 
 /**
  * Generated class for the MorePage page.
@@ -41,6 +42,10 @@ export class MorePage extends BaseUI {
         this.loadUserPage();
     }
 
+    jumpToUser() {
+        this.navCtrl.push(UserPage)
+    }
+
     loadUserPage() {
         this.storage.get('UserId').then(data => {
             if (data != null) {
@@ -65,6 +70,10 @@ export class MorePage extends BaseUI {
 
     showModal() {
         const modal = this.modalCtrl.create(LoginPage);
+        //modal关闭触发回调
+        modal.onDidDismiss(() => {
+            this.loadUserPage();
+        })
         modal.present();
     }
 }

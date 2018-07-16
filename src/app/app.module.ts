@@ -17,11 +17,13 @@ import {LoginPage} from "../pages/login/login";
 import {HttpModule} from "@angular/http";
 import {IonicStorageModule} from "@ionic/storage";
 import {RegisterPage} from "../pages/register/register";
+import {UserPage} from "../pages/user/user";
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
+        UserPage,
         DiscoveryPage,
         ChatPage,
         NotificationPage,
@@ -40,6 +42,7 @@ import {RegisterPage} from "../pages/register/register";
     entryComponents: [
         MyApp,
         HomePage,
+        UserPage,
         DiscoveryPage,
         RegisterPage,
         ChatPage,

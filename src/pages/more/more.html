@@ -30,7 +30,7 @@
     </div>
     <div *ngIf="logined">
         <ion-list class="marginTop">
-            <button ion-item>
+            <button ion-item (click)="jumpToUser()">
                 <ion-avatar item-start>
                     <img src="{{headface}}">
                 </ion-avatar>
