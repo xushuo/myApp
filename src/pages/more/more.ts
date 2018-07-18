@@ -3,7 +3,6 @@ import {LoadingController, ModalController, NavController, NavParams, ToastContr
 import {LoginPage} from "../login/login";
 import {Storage} from "@ionic/storage";
 import {BaseUI} from "../../common/baseui";
-import {RestProvider} from "../../providers/rest/rest";
 import {UserPage} from "../user/user";
 
 /**
@@ -22,14 +21,13 @@ export class MorePage extends BaseUI {
     public notLogin: boolean = true
     public logined: boolean = false
     public headface: string = '';
-    public userinfo: string[] = [];
+    public userinfo =null;
     public errorMessage: any;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public modalCtrl: ModalController,
                 public loadingCtrl: LoadingController,
-                public rest: RestProvider,
                 public toastCtrl: ToastController,
                 public storage: Storage) {
         super();
@@ -50,16 +48,11 @@ export class MorePage extends BaseUI {
         this.storage.get('UserId').then(data => {
             if (data != null) {
                 var loading = super.showLoading(this.loadingCtrl, "加载中...")
-                this.rest.getUserInfo(data)
-                    .subscribe(
-                        e => {
-                            this.userinfo = e;
-                            this.headface = e["UserHeadface"] + "?" + (new Date()).valueOf()
-                            this.notLogin = false;
-                            this.logined = true;
-                            loading.dismiss()
-                        },
-                    );
+                this.userinfo = {UserNickName: '张三'};
+                this.headface = "assets/imgs/man.png"
+                this.notLogin = false;
+                this.logined = true;
+                loading.dismiss()
             } else {
                 this.notLogin = true;
                 this.logined = false;
