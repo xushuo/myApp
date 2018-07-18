@@ -199,6 +199,30 @@ module.exports = [
     "runs": true
   },
   {
+    "id": "cordova-plugin-file-transfer.FileTransferError",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransferError"
+    ]
+  },
+  {
+    "id": "cordova-plugin-file-transfer.FileTransfer",
+    "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+    "pluginId": "cordova-plugin-file-transfer",
+    "clobbers": [
+      "window.FileTransfer"
+    ]
+  },
+  {
+    "id": "cordova-plugin-filepath.FilePath",
+    "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
+    "pluginId": "cordova-plugin-filepath",
+    "clobbers": [
+      "window.FilePath"
+    ]
+  },
+  {
     "id": "cordova-plugin-camera.Camera",
     "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
     "pluginId": "cordova-plugin-camera",
@@ -229,30 +253,6 @@ module.exports = [
     "clobbers": [
       "CameraPopoverHandle"
     ]
-  },
-  {
-    "id": "cordova-plugin-file-transfer.FileTransferError",
-    "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
-    "pluginId": "cordova-plugin-file-transfer",
-    "clobbers": [
-      "window.FileTransferError"
-    ]
-  },
-  {
-    "id": "cordova-plugin-file-transfer.FileTransfer",
-    "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
-    "pluginId": "cordova-plugin-file-transfer",
-    "clobbers": [
-      "window.FileTransfer"
-    ]
-  },
-  {
-    "id": "cordova-plugin-filepath.FilePath",
-    "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
-    "pluginId": "cordova-plugin-filepath",
-    "clobbers": [
-      "window.FilePath"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -264,9 +264,9 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-file": "6.0.1",
-  "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-file-transfer": "1.7.1",
-  "cordova-plugin-filepath": "1.0.2"
+  "cordova-plugin-filepath": "1.0.2",
+  "cordova-plugin-camera": "4.0.3"
 };
 // BOTTOM OF METADATA
 });
