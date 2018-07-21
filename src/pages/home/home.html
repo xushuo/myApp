@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-searchbar placeholder="搜索"></ion-searchbar>
-        <ion-icon name="text" class="top_header_message_ico" (tap)="gotoQuestion()"></ion-icon>
+        <ion-icon name="text" class="top_header_message_ico" (tap)="gotoChat()"></ion-icon>
     </ion-toolbar>
 </ion-header>
 
@@ -19,8 +19,7 @@
                     <div (tap)="gotoQuestion()">
                         <span style="float:left;color: #dddddd;">|</span>
                         <ion-icon name="albums"></ion-icon>
-                        回答
-                        <span style="float:right;color: #dddddd;">|</span>
+                        回答 <span style="float:right;color: #dddddd;">|</span>
                     </div>
                 </ion-col>
                 <ion-col col-4 text-center>
@@ -32,4 +31,26 @@
             </ion-row>
         </ion-grid>
     </div>
+    <ion-card *ngFor="let f of feeds">
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="{{f.HeadFace}}">
+            </ion-avatar>
+            <p>{{f.UserNickName}}回答了问题
+                <ion-icon class="more-button" name="more"></ion-icon>
+            </p>
+        </ion-item>
+        <h2>{{f.ContentTitle}}</h2>
+        <ion-card-content>
+            <p>{{f.ContentSummary}}</p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col col-8 center text-center>
+                <ion-note>
+                    {{f.LickCount}}赞同&nbsp;{{f.CommentContent}}
+                </ion-note>
+            </ion-col>
+            <ion-col col-4 center text-center></ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>
