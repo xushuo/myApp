@@ -13,20 +13,28 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RestProvider {
 
-    //feed
-    /*  private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';*/
+    private apiUrlFeeds = 'https://imoocqa.gugujiankong.com/api/feeds/get';
 
     //account
-    private apiUrlLogin = 'https://imoocqa.gugujiankong.com/api/account/login';
     private apiUrlRegister = 'https://imoocqa.gugujiankong.com/api/account/register';
-    private apiUrlLoginWithMd5 = 'https://imoocqa.gugujiankong.com/api/account/loginwithmd5';
+    private apiUrlLogin = 'https://imoocqa.gugujiankong.com/api/account/login';
     private apiUrlUserInfo = 'https://imoocqa.gugujiankong.com/api/account/userinfo';
     private apiUrlUpdateNickName = 'https://imoocqa.gugujiankong.com/api/account/updatenickname';
+
+    private apiGetUserQuestionList = "https://imoocqa.gugujiankong.com/api/account/getuserquestionlist";
+
     //question
     private apiUrlQuestionSave = 'https://imoocqa.gugujiankong.com/api/question/save';
     private apiUrlQuestionList = 'https://imoocqa.gugujiankong.com/api/question/list?index=1&number=10';
     private apiUrlGetQuestion = "https://imoocqa.gugujiankong.com/api/question/get";
+    private apiUrlGetQuestionWithUser = "https://imoocqa.gugujiankong.com/api/question/getwithuser";
     private apiUrlAnswer = "https://imoocqa.gugujiankong.com/api/question/answer";
+    private apiUrlSaveFavourite = "https://imoocqa.gugujiankong.com/api/question/savefavourite";
+
+
+    //notification
+    private apiUrlUserNotifications = "https://imoocqa.gugujiankong.com/api/account/usernotifications";
+
 
     constructor(public http: Http) {
     }
@@ -35,16 +43,112 @@ export class RestProvider {
         return this.getUrlReturn(this.apiUrlLogin + "?mobile=" + mobile + "&password=" + password);
     }
 
-    public register(mobile, password, nickname): Observable<string[]> {
-        return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&password=" + password + "&nickname=" + nickname);
-    }
-
     public getUserInfo(userId): Observable<string[]> {
         return this.getUrlReturn(this.apiUrlUserInfo + "?userId=" + userId);
     }
 
     public updateInfo(userId, nickname): Observable<string[]> {
         return this.getUrlReturn(this.apiUrlUpdateNickName + "?userId=" + userId + "&nickname=" + nickname);
+    }
+
+    /**
+     * 保存提问
+     *
+     * @param {any} userId
+     * @param {any} title
+     * @param {any} content
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    saveQuestion(userId, title, content): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlQuestionSave + "?userid=" + userId + "&title=" + title + "&content=" + content);
+    }
+
+    /**
+     * 获取问题的详情
+     *
+     * @param {any} id
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getQuestion(id): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlGetQuestion + "?id=" + id);
+    }
+
+    /**
+     * 获取问题的详情，传递 userid 获取到当前用户有没有关注此问题
+     *
+     * @param {any} questionId
+     * @param {any} userId
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getQuestionWithUser(questionId, userId): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlGetQuestionWithUser + "?id=" + questionId + "&userid=" + userId);
+    }
+
+    saveFavourite(questionId, userId): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlSaveFavourite + "?questionid=" + questionId + "&userid=" + userId);
+    }
+
+    answer(userId, questionId, content): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlAnswer + "?userid=" + userId + "&questionid=" + questionId + "&content=" + content);
+    }
+
+    /**
+     * 注册请求
+     *
+     * @param {any} mobile
+     * @param {any} nickname
+     * @param {any} password
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    register(mobile, nickname, password): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlRegister + "?mobile=" + mobile + "&nickname=" + nickname + "&password=" + password)
+    }
+
+    /**
+     * 请求首页的 feeds 流
+     *
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getFeeds(): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlFeeds);
+    }
+
+    /**
+     * 获取所有的新问题
+     *
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getQuestions(): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlQuestionList);
+    }
+
+    /**
+     * 获取用户的提醒消息
+     *
+     * @param {any} userId
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getUserNotifications(userId): Observable<string[]> {
+        return this.getUrlReturn(this.apiUrlUserNotifications + "?userid=" + userId);
+    }
+
+    /**
+     * 获取用户的相关问题列表
+     *
+     * @param {any} userId
+     * @param {any} type  question/answer/favourite
+     * @returns {Observable<string[]>}
+     * @memberof RestProvider
+     */
+    getUserQuestionList(userId, type): Observable<string[]> {
+        return this.getUrlReturn(this.apiGetUserQuestionList + "?userid=" + userId + "&type=" + type);
     }
 
 

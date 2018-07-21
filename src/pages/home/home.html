@@ -1,12 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>主页</ion-title>
-  </ion-navbar>
+    <ion-toolbar>
+        <ion-searchbar placeholder="搜索"></ion-searchbar>
+        <ion-icon name="text" class="top_header_message_ico" (tap)="gotoQuestion()"></ion-icon>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>欢迎大家来到 Just Run!</h2>
-  <p>
-    请查阅我们最新小伙伴的信息！
-  </p>
+<ion-content>
+    <div class="floatMenu">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-4 text-center>
+                    <div (tap)="gotoQuestion()">
+                        <ion-icon name="create"></ion-icon>
+                        提问
+                    </div>
+                </ion-col>
+                <ion-col col-4 text-center>
+                    <div (tap)="gotoQuestion()">
+                        <span style="float:left;color: #dddddd;">|</span>
+                        <ion-icon name="albums"></ion-icon>
+                        回答
+                        <span style="float:right;color: #dddddd;">|</span>
+                    </div>
+                </ion-col>
+                <ion-col col-4 text-center>
+                    <div (tap)="gotoQuestion()">
+                        <ion-icon name="share-alt"></ion-icon>
+                        分享
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>

@@ -25,52 +25,55 @@ import {File} from '@ionic-native/file';
 import {Transfer, TransferObject} from '@ionic-native/transfer';
 import {FilePath} from '@ionic-native/file-path';
 import {Camera} from '@ionic-native/camera';
+import {QuestionPage} from "../pages/question/question";
 
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage,
-    UserPage,
-    DiscoveryPage,
-    ChatPage,
-    NotificationPage,
-    MorePage,
-    RegisterPage,
-    HeadfacePage,
-    LoginPage,
-    TabsPage
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    IonicModule.forRoot(MyApp, {backButtonText: '返回'}),
-    IonicStorageModule.forRoot()
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    UserPage,
-    HeadfacePage,
-    DiscoveryPage,
-    RegisterPage,
-    ChatPage,
-    LoginPage,
-    NotificationPage,
-    MorePage,
-    TabsPage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider,
-    File,
-    Transfer,
-    FilePath,
-    Camera
-  ]
+    declarations: [
+        MyApp,
+        HomePage,
+        UserPage,
+        DiscoveryPage,
+        ChatPage,
+        NotificationPage,
+        MorePage,
+        RegisterPage,
+        HeadfacePage,
+        QuestionPage,
+        LoginPage,
+        TabsPage
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        IonicModule.forRoot(MyApp, {backButtonText: '返回'}),
+        IonicStorageModule.forRoot()
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        HomePage,
+        UserPage,
+        QuestionPage,
+        HeadfacePage,
+        DiscoveryPage,
+        RegisterPage,
+        ChatPage,
+        LoginPage,
+        NotificationPage,
+        MorePage,
+        TabsPage
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        {provide: ErrorHandler, useClass: IonicErrorHandler},
+        RestProvider,
+        File,
+        Transfer,
+        FilePath,
+        Camera
+    ]
 })
 export class AppModule {
 }
