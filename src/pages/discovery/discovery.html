@@ -7,47 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>小伙伴们</ion-title>
+    <ion-title>发现</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-  <ion-list>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/man.png">
-      </ion-avatar>
-      <h2>侯雨</h2>
-      <h3>工程师</h3>
-      <p>永不言弃</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/man.png">
-      </ion-avatar>
-      <h2>周二龙</h2>
-      <h3>工程师</h3>
-      <p>真的想睡觉</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/man.png">
-      </ion-avatar>
-      <h2>张武林</h2>
-      <h3>工程师</h3>
-      <p>兢兢业业</p>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imgs/man.png">
-      </ion-avatar>
-      <h2>张福林</h2>
-      <h3>工程师</h3>
-      <p>迷迷糊糊</p>
-    </ion-item>
-  </ion-list>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="下拉刷新"
+            refreshingSpinner="circles"
+            refreshingText="数据加载中...">
 
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+
+  <ion-card *ngFor="let item of questions"  (click)="gotoDetails(item.IdentityId)">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{item.HeadFace}}">
+      </ion-avatar>
+      <p>{{item.UserNickName}}发布了问题
+        <ion-icon class="more-button" name="more"></ion-icon>
+      </p>
+    </ion-item>
+    <h2>{{item.ContentTitle}}</h2>
+    <ion-card-content>
+      <p>{{item.ContentSummary}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col col-8 center text-center>
+        <ion-note>
+          {{item.LickCount}}赞同&nbsp;{{item.CommentContent}}
+        </ion-note>
+      </ion-col>
+      <ion-col col-4r></ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
