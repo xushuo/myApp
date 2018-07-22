@@ -7,6 +7,7 @@ import {Storage} from "@ionic/storage";
 import {QuestionPage} from "../question/question";
 import {RestProvider} from "../../providers/rest/rest";
 import {BaseUI} from "../../common/baseui";
+import {DetailsPage} from "../details/details";
 
 @Component({
     selector: 'page-home',
@@ -14,7 +15,14 @@ import {BaseUI} from "../../common/baseui";
 })
 export class HomePage extends BaseUI {
 
-    public feeds: string[];
+    public feeds: string[]=[{
+        IdentityId:1,
+        HeadFace:"assets/imgs/man.png",
+        ContentTitle:"为什么天上会有星星",
+        ContentSummary:"因为是各种流行彗星和太阳自然而然的就在上面了。",
+        LickCount:"200",
+        CommentContent:"真的不太确定",
+    }];
     public errorMessage: any
 
     constructor(public navCtrl: NavController,
@@ -28,7 +36,7 @@ export class HomePage extends BaseUI {
         super()
     }
 
-    ionViewDidLoad(){
+    ionViewDidLoad() {
         this.getFeeds()
     }
 
@@ -55,5 +63,10 @@ export class HomePage extends BaseUI {
                 loading.dismiss();
             },
             error => this.errorMessage = <any>error);
+    }
+
+    gotoDetails(id) {
+        this.navCtrl.push(DetailsPage, {id: id})
+
     }
 }

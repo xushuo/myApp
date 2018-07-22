@@ -26,6 +26,7 @@ import {Transfer, TransferObject} from '@ionic-native/transfer';
 import {FilePath} from '@ionic-native/file-path';
 import {Camera} from '@ionic-native/camera';
 import {QuestionPage} from "../pages/question/question";
+import {DetailsPage} from "../pages/details/details";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {QuestionPage} from "../pages/question/question";
         HeadfacePage,
         QuestionPage,
         LoginPage,
+        DetailsPage,
         TabsPage
     ],
     imports: [
@@ -54,6 +56,7 @@ import {QuestionPage} from "../pages/question/question";
         MyApp,
         HomePage,
         UserPage,
+        DetailsPage,
         QuestionPage,
         HeadfacePage,
         DiscoveryPage,
