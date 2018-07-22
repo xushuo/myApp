@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
+import {BaseUI} from "../../common/baseui";
+import {RestProvider} from "../../providers/rest/rest";
+import {Storage} from "@ionic/storage";
+import {DetailsPage} from "../details/details";
 
 /**
  * Generated class for the NotificationPage page.
@@ -10,16 +14,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-notification',
-  templateUrl: 'notification.html',
+    selector: 'page-notification',
+    templateUrl: 'notification.html',
 })
-export class NotificationPage {
+export class NotificationPage extends BaseUI {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    public errorMessage
+    public list
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotificationPage');
-  }
+    constructor(public navCtrl: NavController,
+                public loadingCtrl: LoadingController,
+                public rest: RestProvider,
+                public toastCtrl: ToastController,
+                public storage: Storage,
+                public navParams: NavParams) {
+        super()
+    }
 
+    ionViewDidLoad() {
+        this.storage.get("UserId").then(e => {
+            if (e != null) {
+                var loading = super.showLoading(this.loadingCtrl, "加载中...")
+                this.rest.getUserNotifications(e).subscribe(e => {
+                        this.list = e
+                        loading.dismissAll();
+                    },
+                    error => this.errorMessage = <any>error)
+            } else {
+                super.showToast(this.toastCtrl, "请登录后浏览...")
+            }
+        })
+    }
+
+    gotoDetails(id) {
+        this.navCtrl.push(DetailsPage, {id: id})
+    }
 }

@@ -6,13 +6,21 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>notification</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>通知</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let item of list" (click)="gotoDetails(item.QuestionId)">
+            <ion-avatar item-left>
+                <img src="{{item.HeadFace}}">
+            </ion-avatar>
+            <h2>{{item.NotificationTitle}}</h2>
+            <p>{{item.NotificationMessage}}</p>
+        </ion-item>
+    </ion-list>
 </ion-content>
