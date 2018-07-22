@@ -15,14 +15,7 @@ import {DetailsPage} from "../details/details";
 })
 export class HomePage extends BaseUI {
 
-    public feeds: string[]=[{
-        IdentityId:1,
-        HeadFace:"assets/imgs/man.png",
-        ContentTitle:"为什么天上会有星星",
-        ContentSummary:"因为是各种流行彗星和太阳自然而然的就在上面了。",
-        LickCount:"200",
-        CommentContent:"真的不太确定",
-    }];
+    public feeds: any;
     public errorMessage: any
 
     constructor(public navCtrl: NavController,
@@ -37,6 +30,14 @@ export class HomePage extends BaseUI {
     }
 
     ionViewDidLoad() {
+        this.feeds = [{
+            IdentityId: 1,
+            HeadFace: "assets/imgs/man.png",
+            ContentTitle: "为什么天上会有星星",
+            ContentSummary: "因为是各种流行彗星和太阳自然而然的就在上面了。",
+            LickCount: "200",
+            CommentContent: "真的不太确定",
+        }];
         this.getFeeds()
     }
 

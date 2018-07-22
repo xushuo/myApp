@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>详情</ion-title>
+        <ion-title>{{question?.ContentTitle}}</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -16,28 +16,29 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
-            为什么天上会有星星
-            <p>500个关注&nbsp;10和回答</p>
-            <button ion-button small>
-                <ion-icon name="add"></ion-icon>
-                关注
-            </button>
-            <button ion-button small>
+            {{question?.Content}}
+            <p>{{question?.LikeCount}}个关注&nbsp;{{question?.CommentCount}}个回复</p>
+
+            <button ion-button small [disabled]="isMyquestion">
                 <ion-icon name="add"></ion-icon>
                 回答
+            </button>
+            <button ion-button small color="secondary" (click)="saveFavourite()">
+                {{IsFavourite?"取消关注":"关注"}}
             </button>
         </ion-card-content>
     </ion-card>
 
-    <ion-card >
+    <ion-card *ngFor="let item of answers">
         <ion-item>
             <ion-avatar item-start>
-                <img src="assets/imgs/man.png">
+                <img src="{{item.HeadFace}}">
             </ion-avatar>
-            <p>回答了问题</p>
+            <p>{{item.UserNickName}}</p>
         </ion-item>
         <ion-card-content>
-            <p>因为是各种流行彗星和太阳自然而然的就在上面了</p>
+            <p>{{item.Content}}</p>
+            <p>{{item.CreateDatetime}}</p>
         </ion-card-content>
     </ion-card>
 
