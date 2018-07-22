@@ -68,6 +68,5 @@ export class HomePage extends BaseUI {
 
     gotoDetails(id) {
         this.navCtrl.push(DetailsPage, {id: id})
-
     }
 }

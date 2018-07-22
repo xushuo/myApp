@@ -19,7 +19,7 @@
             {{question?.Content}}
             <p>{{question?.LikeCount}}个关注&nbsp;{{question?.CommentCount}}个回复</p>
 
-            <button ion-button small [disabled]="isMyquestion">
+            <button ion-button small [disabled]="isMyquestion" (click)="showAnswer()">
                 <ion-icon name="add"></ion-icon>
                 回答
             </button>

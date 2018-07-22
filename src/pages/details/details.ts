@@ -6,6 +6,7 @@ import {
 import {BaseUI} from "../../common/baseui";
 import {RestProvider} from "../../providers/rest/rest";
 import {Storage} from "@ionic/storage";
+import {AnswerPage} from "../answer/answer";
 
 /**
  * Generated class for the DetailsPage page.
@@ -46,7 +47,6 @@ export class DetailsPage extends BaseUI {
     }
 
     saveFavourite() {
-        var loading = super.showLoading(this.loadingCtrl, "请求中...");
         this.storage.get("UserId").then(val => {
             if (val != null) {
                 this.UserId = val;
@@ -76,6 +76,14 @@ export class DetailsPage extends BaseUI {
                 }
             },
             error => this.errorMessage = <any>error);
+    }
+
+    showAnswer() {
+        var modal = this.modalCtrl.create(AnswerPage, {"id": this.id});
+        modal.onDidDismiss(() => {
+            this.loadQuestion();
+        })
+        modal.present()
     }
 
 }
