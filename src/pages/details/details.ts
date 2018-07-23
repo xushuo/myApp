@@ -43,7 +43,7 @@ export class DetailsPage extends BaseUI {
 
     ionViewDidLoad() {
         this.id = this.navParams.get("id")
-        this.loadQuestion(this.id);
+        this.loadQuestion();
     }
 
     saveFavourite() {
@@ -65,7 +65,7 @@ export class DetailsPage extends BaseUI {
 
     }
 
-    loadQuestion(id) {
+    loadQuestion() {
         var loading = super.showLoading(this.loadingCtrl, "加载中...");
         this.rest.getQuestionWithUser(this.id, this.UserId).subscribe(
             e => {
@@ -79,7 +79,7 @@ export class DetailsPage extends BaseUI {
     }
 
     showAnswer() {
-        var modal = this.modalCtrl.create(AnswerPage, {"id": this.id});
+        const modal = this.modalCtrl.create(AnswerPage, {"id": this.id});
         modal.onDidDismiss(() => {
             this.loadQuestion();
         })

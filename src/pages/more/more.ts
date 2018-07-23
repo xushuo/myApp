@@ -5,6 +5,7 @@ import {Storage} from "@ionic/storage";
 import {BaseUI} from "../../common/baseui";
 import {RestProvider} from "../../providers/rest/rest";
 import {UserPage} from "../user/user";
+import {UserdatalistPage} from "../userdatalist/userdatalist";
 
 /**
  * Generated class for the MorePage page.
@@ -36,9 +37,6 @@ export class MorePage extends BaseUI {
     }
 
     ionViewDidLoad() {
-    }
-
-    ionViewDidEnter() {
         this.loadUserPage();
     }
 
@@ -67,7 +65,6 @@ export class MorePage extends BaseUI {
         })
     }
 
-
     showModal() {
         const modal = this.modalCtrl.create(LoginPage);
         //modal关闭触发回调
@@ -76,4 +73,9 @@ export class MorePage extends BaseUI {
         })
         modal.present();
     }
+
+    gotoDataList(type) {
+        this.navCtrl.push(UserdatalistPage, {"dataType": type})
+    }
+
 }

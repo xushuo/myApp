@@ -28,6 +28,8 @@ import {Camera} from '@ionic-native/camera';
 import {QuestionPage} from "../pages/question/question";
 import {DetailsPage} from "../pages/details/details";
 import {AnswerPage} from "../pages/answer/answer";
+import {ComponentsModule} from "../components/components.module";
+import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import {AnswerPage} from "../pages/answer/answer";
         UserPage,
         DiscoveryPage,
         ChatPage,
+        UserdatalistPage,
         NotificationPage,
         MorePage,
         RegisterPage,
@@ -51,13 +54,16 @@ import {AnswerPage} from "../pages/answer/answer";
         BrowserModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {backButtonText: '返回'}),
+        ComponentsModule,
         IonicStorageModule.forRoot()
+
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
         HomePage,
         AnswerPage,
+        UserdatalistPage,
         UserPage,
         DetailsPage,
         QuestionPage,
