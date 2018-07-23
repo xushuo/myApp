@@ -37,6 +37,9 @@ export class MorePage extends BaseUI {
     }
 
     ionViewDidLoad() {
+    }
+
+    ionViewDidEnter() {
         this.loadUserPage();
     }
 
