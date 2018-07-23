@@ -46,7 +46,7 @@ export class DetailsPage extends BaseUI {
         this.loadQuestion();
     }
 
-    saveFavourite() {
+    loadQuestion() {
         this.storage.get("UserId").then(val => {
             if (val != null) {
                 this.UserId = val;
@@ -62,12 +62,11 @@ export class DetailsPage extends BaseUI {
                     error => this.errorMessage = <any>error);
             }
         })
-
     }
 
-    loadQuestion() {
+    saveFavourite() {
         var loading = super.showLoading(this.loadingCtrl, "加载中...");
-        this.rest.getQuestionWithUser(this.id, this.UserId).subscribe(
+        this.rest.saveFavourite(this.id, this.UserId).subscribe(
             e => {
                 if (e["Status"] == "OK") {
                     loading.dismiss();
