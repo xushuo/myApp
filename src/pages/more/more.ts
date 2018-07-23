@@ -7,6 +7,7 @@ import {RestProvider} from "../../providers/rest/rest";
 import {UserPage} from "../user/user";
 import {UserdatalistPage} from "../userdatalist/userdatalist";
 import {SettingsProvider} from "../../providers/settings/settings";
+import {ScanPage} from "../scan/scan";
 
 /**
  * Generated class for the MorePage page.
@@ -88,8 +89,13 @@ export class MorePage extends BaseUI {
     toggleChangeTheme() {
         if (this.selectTheme == "dark-theme") {
             this.settings.setActiveTheme('light-theme')
-        }else{
+        } else {
             this.settings.setActiveTheme('dark-theme')
         }
+    }
+
+    //跳转到扫描二维码，加上动画false，为了相机能在屏幕中显示。
+    gotoScanQRCode() {
+        this.navCtrl.push(ScanPage, null, {"animate": false})
     }
 }
