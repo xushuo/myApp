@@ -20,7 +20,6 @@ import {RegisterPage} from "../pages/register/register";
 import {UserPage} from "../pages/user/user";
 import {HeadfacePage} from "../pages/headface/headface";
 
-//导入四个外部加载进来的组件，具体的安装方法在 09-01 章节
 import {File} from '@ionic-native/file';
 import {Transfer, TransferObject} from '@ionic-native/transfer';
 import {FilePath} from '@ionic-native/file-path';
