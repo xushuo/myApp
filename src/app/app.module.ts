@@ -25,7 +25,8 @@ import {File} from '@ionic-native/file';
 import {Transfer, TransferObject} from '@ionic-native/transfer';
 import {FilePath} from '@ionic-native/file-path';
 import {Camera} from '@ionic-native/camera';
-import { QRScanner } from '@ionic-native/qr-scanner';
+import {QRScanner} from '@ionic-native/qr-scanner';
+import {AppVersion} from '@ionic-native/app-version';
 
 import {QuestionPage} from "../pages/question/question";
 import {DetailsPage} from "../pages/details/details";
@@ -34,6 +35,7 @@ import {ComponentsModule} from "../components/components.module";
 import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
 import {SettingsProvider} from "../providers/settings/settings";
 import {ScanPage} from "../pages/scan/scan";
+import {VersionPage} from "../pages/version/version";
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import {ScanPage} from "../pages/scan/scan";
         AnswerPage,
         ScanPage,
         DetailsPage,
+        VersionPage,
         TabsPage
     ],
     imports: [
@@ -79,6 +82,7 @@ import {ScanPage} from "../pages/scan/scan";
         LoginPage,
         NotificationPage,
         MorePage,
+        VersionPage,
         TabsPage
     ],
     providers: [
@@ -91,7 +95,8 @@ import {ScanPage} from "../pages/scan/scan";
         Transfer,
         FilePath,
         Camera,
-        QRScanner
+        QRScanner,
+        AppVersion
     ]
 })
 export class AppModule {

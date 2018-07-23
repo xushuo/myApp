@@ -8,6 +8,7 @@ import {UserPage} from "../user/user";
 import {UserdatalistPage} from "../userdatalist/userdatalist";
 import {SettingsProvider} from "../../providers/settings/settings";
 import {ScanPage} from "../scan/scan";
+import {VersionPage} from "../version/version";
 
 /**
  * Generated class for the MorePage page.
@@ -98,4 +99,9 @@ export class MorePage extends BaseUI {
     gotoScanQRCode() {
         this.navCtrl.push(ScanPage, null, {"animate": false})
     }
+
+    gotoVersions() {
+        this.navCtrl.push(VersionPage)
+    }
+
 }
