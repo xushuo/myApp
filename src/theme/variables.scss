@@ -39,6 +39,7 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   orange:      orange,
+  purple:      purple,
   dark:       #222
 );
 
@@ -87,4 +88,6 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
-@import "light";
+//导入两套主题
+@import "theme.dark";
+@import "theme.light";

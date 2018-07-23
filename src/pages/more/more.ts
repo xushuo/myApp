@@ -6,6 +6,7 @@ import {BaseUI} from "../../common/baseui";
 import {RestProvider} from "../../providers/rest/rest";
 import {UserPage} from "../user/user";
 import {UserdatalistPage} from "../userdatalist/userdatalist";
+import {SettingsProvider} from "../../providers/settings/settings";
 
 /**
  * Generated class for the MorePage page.
@@ -25,6 +26,7 @@ export class MorePage extends BaseUI {
     public headface: string = '';
     public userinfo: string[] = [];
     public errorMessage: any;
+    selectTheme: string;
 
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
@@ -32,8 +34,10 @@ export class MorePage extends BaseUI {
                 public loadingCtrl: LoadingController,
                 public rest: RestProvider,
                 public toastCtrl: ToastController,
-                public storage: Storage) {
+                public storage: Storage,
+                private settings: SettingsProvider) {
         super();
+        this.settings.getActiveTheme().subscribe(val => this.selectTheme = val)
     }
 
     ionViewDidLoad() {
@@ -81,4 +85,11 @@ export class MorePage extends BaseUI {
         this.navCtrl.push(UserdatalistPage, {"dataType": type})
     }
 
+    toggleChangeTheme() {
+        if (this.selectTheme == "dark-theme") {
+            this.settings.setActiveTheme('light-theme')
+        }else{
+            this.settings.setActiveTheme('dark-theme')
+        }
+    }
 }

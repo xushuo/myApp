@@ -30,7 +30,7 @@ import {DetailsPage} from "../pages/details/details";
 import {AnswerPage} from "../pages/answer/answer";
 import {ComponentsModule} from "../components/components.module";
 import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
-
+import {SettingsProvider} from "../providers/settings/settings";
 
 @NgModule({
     declarations: [
@@ -56,7 +56,6 @@ import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
         IonicModule.forRoot(MyApp, {backButtonText: '返回'}),
         ComponentsModule,
         IonicStorageModule.forRoot()
-
     ],
     bootstrap: [IonicApp],
     entryComponents: [
@@ -77,6 +76,7 @@ import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
         TabsPage
     ],
     providers: [
+        SettingsProvider,
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
