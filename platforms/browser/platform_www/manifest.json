@@ -1,6 +1,6 @@
 {
-  "name": "MyApp",
-  "short_name": "MyApp",
+  "name": "justRun",
+  "short_name": "justRun",
   "description": "Description of your app from template",
   "start_url": "index.html",
   "scope": "index.html",

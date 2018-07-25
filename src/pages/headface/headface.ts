@@ -93,7 +93,8 @@ export class HeadfacePage extends BaseUI {
                         //获取正确的路径
                         let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
                         //获取正确的文件名
-                        let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+                       // let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
+                        let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, filePath.length);
                         this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
                     });
             }
