@@ -35,6 +35,7 @@ import {UserdatalistPage} from "../pages/userdatalist/userdatalist";
 import {SettingsProvider} from "../providers/settings/settings";
 import {ScanPage} from "../pages/scan/scan";
 import {VersionPage} from "../pages/version/version";
+import {MsgProvider} from '../providers/msg/msg';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import {VersionPage} from "../pages/version/version";
         FilePath,
         Camera,
         QRScanner,
-        AppVersion
+        AppVersion,
+        MsgProvider
     ]
 })
 export class AppModule {
